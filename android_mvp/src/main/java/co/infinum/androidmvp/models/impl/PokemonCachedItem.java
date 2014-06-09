@@ -1,7 +1,8 @@
 package co.infinum.androidmvp.models.impl;
 
-import android.graphics.Bitmap;
 import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 
 import co.infinum.androidmvp.models.Item;
 
@@ -14,7 +15,7 @@ public class PokemonCachedItem implements Item {
 
     private String name;
 
-    private Bitmap image;
+    private int imageResId;
 
     public String getNumber() {
         return number;
@@ -32,6 +33,10 @@ public class PokemonCachedItem implements Item {
         this.name = name;
     }
 
+    public void setImageResId(int imageResId) {
+        this.imageResId = imageResId;
+    }
+
     @Override public String getTitle() {
         return getName();
     }
@@ -41,7 +46,7 @@ public class PokemonCachedItem implements Item {
     }
 
     @Override public void setImageToView(ImageView imageView) {
-
+        Picasso.with(imageView.getContext()).load(imageResId).into(imageView);
     }
 }
 

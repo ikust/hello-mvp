@@ -15,6 +15,20 @@ public interface MainView {
     public void showItems(ArrayList<Item> item);
 
     /**
+     * Show details for item.
+     *
+     * @param item
+     */
+    public void showDetails(Item item);
+
+    /**
+     * Shows an error message.
+     *
+     * @param message Message content
+     */
+    public void showError(String message);
+
+    /**
      * Shows loading layout on the view.
      */
     public void showLoadingLayout();

@@ -19,5 +19,5 @@ public interface ItemLoadListener {
     /**
      * Called when there was an error loading the items.
      */
-    public void failure();
+    public void failure(String errorMessage);
 }

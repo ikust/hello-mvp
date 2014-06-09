@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import java.util.ArrayList;
@@ -19,10 +19,11 @@ import co.infinum.androidmvp.mvp.presenter.impl.MainPresenterImpl;
 import co.infinum.androidmvp.mvp.view.MainView;
 import co.infinum.androidmvp.utils.Utils;
 
-public class GridMainActivity extends ActionBarActivity implements MainView {
+
+public class ListMainActivity extends ActionBarActivity implements MainView {
 
     @InjectView(R.id.rootView) ViewGroup rootView;
-    @InjectView(R.id.gridView) GridView gridView;
+    @InjectView(R.id.listView) ListView listView;
     @InjectView(R.id.progressBar) ProgressBar progressBar;
 
     private ItemAdapter adapter;
@@ -32,11 +33,11 @@ public class GridMainActivity extends ActionBarActivity implements MainView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_grid_main);
+        setContentView(R.layout.activity_list_main);
 
         ButterKnife.inject(this);
-        adapter = new ItemAdapter(this, R.layout.griditem, new ArrayList<Item>());
-        gridView.setAdapter(adapter);
+        adapter = new ItemAdapter(this, R.layout.listitem, new ArrayList<Item>());
+        listView.setAdapter(adapter);
 
         //Injecting dependencies.
         mainPresenter = new MainPresenterImpl(this);
@@ -54,7 +55,6 @@ public class GridMainActivity extends ActionBarActivity implements MainView {
     @Override public void showError(String message) {
         Utils.showError(this, rootView, message, false);
     }
-
 
     @Override public void showItems(ArrayList<Item> items) {
         adapter.clear();

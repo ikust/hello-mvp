@@ -1,6 +1,6 @@
 package co.infinum.androidmvp.models;
 
-import android.graphics.Bitmap;
+import android.widget.ImageView;
 
 /**
  * Created by ivan on 09/06/14.
@@ -11,5 +11,5 @@ public interface Item {
 
     public String getTitle();
 
-    public Bitmap getImage();
+    public void setImageToView(ImageView imageView);
 }
