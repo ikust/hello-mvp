@@ -9,7 +9,8 @@ import co.infinum.androidmvp.R;
 import co.infinum.androidmvp.models.Item;
 
 /**
- * Dodajem comment da vidimo jel radi jenkins. Još malo.
+ * Dodajem comment da vidimo jel radi jenkins.
+ *
  */
 public class PokemonRemoteItem implements Item {
 
