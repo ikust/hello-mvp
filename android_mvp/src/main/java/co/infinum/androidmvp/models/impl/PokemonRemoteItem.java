@@ -20,11 +20,13 @@ public class PokemonRemoteItem implements Item {
         private String name;
     }
 
+    @SerializedName("id")
     private int id;
 
     @SerializedName("image")
     private String imageUrl;
 
+    @SerializedName("pokemon")
     private Pokemon pokemon;
 
     @Override public String getTitle() {
