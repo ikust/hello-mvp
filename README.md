@@ -1,4 +1,1 @@
-Amo probat
-amo ponovno
-
-Say whaat
+An example Model View Presenter project.
