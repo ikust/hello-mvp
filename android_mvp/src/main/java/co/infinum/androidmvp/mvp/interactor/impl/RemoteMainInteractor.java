@@ -48,15 +48,7 @@ public class RemoteMainInteractor implements MainInteractor {
     @Override public void loadItems(ItemLoadListener listener) {
         this.listener = listener;
 
-        String endpoint = MvpApplication.getInstance().getString(R.string.api_server);
-
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint(endpoint)
-                .build();
-
-        apiInterface = restAdapter.create(ApiInterface.class);
-
         //Start from the second, first one doesn't return proper data.
-        apiInterface.getPokemon(START_ID, callback);
+        MvpApplication.getInstance().getRestClient().getPokemon(START_ID, callback);
     }
 }
