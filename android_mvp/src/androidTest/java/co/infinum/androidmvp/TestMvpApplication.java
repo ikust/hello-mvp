@@ -19,12 +19,16 @@ import retrofit.RestAdapter;
 public class TestMvpApplication extends MvpApplication {
 
     class SynchronousExecutor implements Executor {
-        @Override public void execute(Runnable command) {
+
+        @Override
+        public void execute(Runnable command) {
             command.run();
         }
     }
 
     private static MockWebServer mockWebServer;
+
+    private static ApiInterface mApiInterface;
 
     @Override
     public void onCreate() {
@@ -40,16 +44,18 @@ public class TestMvpApplication extends MvpApplication {
         } catch (IOException e) {
             throw new IllegalStateException("Unable to start mock Host");
         }
-    }
 
-    @Override
-    public ApiInterface getRestClient() {
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint(mockWebServer.getUrl("/").toString())
                 .setExecutors(new SynchronousExecutor(), new SynchronousExecutor())
                 .build();
 
-        return restAdapter.create(ApiInterface.class);
+        mApiInterface = restAdapter.create(ApiInterface.class);
+    }
+
+    @Override
+    public ApiInterface getRestClient() {
+        return mApiInterface;
     }
 
     public static void enqueue(MockResponse mockResponse) {

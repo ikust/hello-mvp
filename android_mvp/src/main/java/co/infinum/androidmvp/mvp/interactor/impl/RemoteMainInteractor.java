@@ -10,7 +10,6 @@ import co.infinum.androidmvp.mvp.interactor.MainInteractor;
 import co.infinum.androidmvp.mvp.listeners.ItemLoadListener;
 import co.infinum.androidmvp.retrofit.ApiInterface;
 import retrofit.Callback;
-import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
@@ -48,6 +47,7 @@ public class RemoteMainInteractor implements MainInteractor {
     @Override public void loadItems(ItemLoadListener listener) {
         this.listener = listener;
 
+        System.out.println("loading items");
         //Start from the second, first one doesn't return proper data.
         MvpApplication.getInstance().getRestClient().getPokemon(START_ID, callback);
     }
